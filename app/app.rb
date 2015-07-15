@@ -1,12 +1,12 @@
 require 'sinatra/base'
-require './data_mapper_setup'
+require './app/data_mapper_setup'
 
 class Table_Tennis < Sinatra::Base
   set :views, proc{ File.join(root, 'views')}
 
-  get '/' do 
+  get '/' do
     erb :'users/new'
-  end 
+  end
 
   get '/users/new' do
     User.create(name: params[:name], score: 0)
@@ -30,4 +30,4 @@ class Table_Tennis < Sinatra::Base
 #     User.get(session[:user_id])
 #   end
 
-end 
+end
