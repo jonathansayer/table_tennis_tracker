@@ -1,0 +1,11 @@
+<h1> Users </h1>
+
+<ul id="links">
+  <% @users.each do |user| %>
+    <li>
+      User: <%= user.name %>
+      score:   <%= user.score  %>
+      <p></p>
+    </li>
+  <% end %>
+</ul>

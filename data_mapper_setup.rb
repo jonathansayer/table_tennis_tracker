@@ -10,4 +10,4 @@ require './app/models/users'
 
 DataMapper.finalize
 
-DataMapper.auto_upgrade!
+DataMapper.auto_upgrade!  
