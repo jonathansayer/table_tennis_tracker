@@ -9,8 +9,17 @@ attr_reader :all_rounds
     @players = ids
     @current_round = generate_round_1(ids)
     @next_round = Array.new(current_round.length/2){ Array.new(0) }
-    @all_rounds = []
+    @all_rounds = tournament_table
   end
+
+  def tournament_table
+    table = [current_round]
+    until table[-1].length == 1 do
+      table << Array.new(current_round.length/2){ Array.new(0) }
+    end
+    table
+  end
+
 
   def generate_round_1 ids
     first_round_players = ids.shuffle
@@ -37,8 +46,8 @@ attr_reader :all_rounds
   end
 
   def update_rounds
-    @all_rounds << @current_round
     @current_round = @next_round
+    @all_rounds << @current_round
     @next_round = Array.new(current_round.length/2){ Array.new(0) }
   end
 

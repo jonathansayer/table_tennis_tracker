@@ -1,6 +1,25 @@
 Hello World
+<!--
+<%= @table.to_s %>
+
 <ul>
 <% @players.each do |id| %>
     <li><%= id %></li>
 <% end %>
+</ul>
+<br></br> -->
+
+
+
+<ul>
+    <% num = 1 %>
+  <% @table.each do |round| %>
+
+
+    <li>
+      <%= "Round #{num}" %>
+      <%= round %>
+    </li>
+    <% num += 1 %>
+  <% end %>
 </ul>
