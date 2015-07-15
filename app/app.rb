@@ -3,6 +3,7 @@ require './app/data_mapper_setup'
 
 class Table_Tennis < Sinatra::Base
   set :views, proc{ File.join(root, 'views')}
+  enable :sessions
 
   get '/' do
     erb :'users/new'
@@ -19,11 +20,18 @@ class Table_Tennis < Sinatra::Base
   end
 
   post '/tournament' do
-    usernames = params[:usernames]
-    @users = User.all(name: usernames)
-    erb :'users/new'
+    p session[:names] ||= params[:username]
+    redirect '/tournament/start'
   end
 
+  get '/tournament/start' do
+    @ids = []
+    session[:names].each do |username|
+      @ids << User.all(name: username)[0].id
+    end
+    # your game logic goes here
+    erb :'tournament/start'
+  end
 #   post '/users' do
 #     @user = User.new( name: params[:name])
 #     if @user.save
