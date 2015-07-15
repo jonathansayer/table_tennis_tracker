@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './app/data_mapper_setup'
+require './lib/game.rb'
 
 class Table_Tennis < Sinatra::Base
   set :views, proc{ File.join(root, 'views')}
@@ -39,5 +40,11 @@ class Table_Tennis < Sinatra::Base
 #   def current_user
 #     User.get(session[:user_id])
 #   end
+
+  get '/table' do
+    game = Game.new(['David', 'Kirsten', 'Faisal', 'Jonathan', 'Natalia'])
+    @players = game.current_round
+    erb :'/table/view'
+  end
 
 end

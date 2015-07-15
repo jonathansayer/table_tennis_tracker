@@ -93,6 +93,3 @@ DEPENDENCIES
   dm-postgres-adapter
   dm-validations
   sinatra
-
-BUNDLED WITH
-   1.10.5
