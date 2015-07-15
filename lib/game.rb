@@ -1,13 +1,13 @@
 class Game
 
-attr_accessor :round_1
+attr_reader :current_round
 attr_reader :players
 attr_accessor :next_round
 
   def initialize(ids)
     @players = ids
-    @round_1 = generate_round_1(ids)
-    @next_round = Array.new(round_1.length/2){ Array.new(0) }
+    @current_round = generate_round_1(ids)
+    @next_round = Array.new(current_round.length/2){ Array.new(0) }
   end
 
   def generate_round_1 ids
@@ -29,9 +29,14 @@ attr_accessor :next_round
   end
 
   def winner(id)
-    flat_current_players = @round_1.flatten
+    flat_current_players = @current_round.flatten
     i = flat_current_players.index(id).to_i
     @next_round[i / 4] << id
+  end
+
+  def update_rounds
+    @current_round = @next_round
+    @next_round = Array.new(current_round.length/2){ Array.new(0) }
   end
 
 

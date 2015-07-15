@@ -9,7 +9,7 @@ describe Game do
 
   it 'creates shuffled pairs for the first round' do
     game = Game.new(['David', 'David', 'David'])
-    expect(game.round_1).to eq([['David', 'Bye'], ['David', 'David']])
+    expect(game.current_round).to eq([['David', 'Bye'], ['David', 'David']])
   end
 
   it 'generates the second round of players' do
