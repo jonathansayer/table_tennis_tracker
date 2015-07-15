@@ -26,7 +26,7 @@ attr_reader :players
     gamesize - players.length
   end
 
-  #
+
   #
   #
   # def winner
