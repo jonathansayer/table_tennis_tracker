@@ -1,13 +1,15 @@
 class Game
 
 attr_reader :round_1
+attr_reader :players
 
   def initialize(ids)
+    @players = ids
     @round_1 = generate_round_1(ids)
   end
 
-  def generate_round_1(players)
-    first_round_players = players.shuffle
+  def generate_round_1 ids
+    first_round_players = ids.shuffle
     n = 1
     byes.times {
       first_round_players.insert(n, "Bye")
