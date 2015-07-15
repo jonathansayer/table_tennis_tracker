@@ -14,6 +14,16 @@ class Table_Tennis < Sinatra::Base
     erb :'/users/users'
   end
 
+  get '/tournament/new' do
+    erb :'tournament/new'
+  end
+
+  post '/tournament' do
+    usernames = params[:usernames]
+    @users = User.all(name: usernames)
+    erb :'users/new'
+  end
+
 #   post '/users' do
 #     @user = User.new( name: params[:name])
 #     if @user.save
