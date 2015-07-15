@@ -8,26 +8,10 @@ class Table_Tennis < Sinatra::Base
     erb :'users/new'
   end 
 
-  get '/users/new' do
+  get '/users/table' do
     User.create(name: params[:name], score: 0)
-    @users = User.all
-    erb :'/users/users'
+    @users = User.all.sort_by{|user| user.score}.reverse
+    erb :'/users/table'
   end
-
-#   post '/users' do
-#     @user = User.new( name: params[:name])
-#     if @user.save
-#       session[:user_id] = @user.id
-#       redirect to('/')
-#     else
-#       flash.now[:errors] = @user.errors.full_messages
-#       erb :'users/new'
-#     end
-#   end
-
-# helpers do
-#   def current_user
-#     User.get(session[:user_id])
-#   end
 
 end 
