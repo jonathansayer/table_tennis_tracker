@@ -3,11 +3,13 @@ class Game
 attr_reader :current_round
 attr_reader :players
 attr_accessor :next_round
+attr_reader :all_rounds
 
   def initialize(ids)
     @players = ids
     @current_round = generate_round_1(ids)
     @next_round = Array.new(current_round.length/2){ Array.new(0) }
+    @all_rounds = []
   end
 
   def generate_round_1 ids
@@ -35,36 +37,9 @@ attr_accessor :next_round
   end
 
   def update_rounds
+    @all_rounds << @current_round
     @current_round = @next_round
     @next_round = Array.new(current_round.length/2){ Array.new(0) }
   end
 
-
-
-
-
-
-#
-#   make next round array with right number of subarrays.
-#
-#   def place_winners(id)
-#     i  = first_round_players.index(player)
-#     if i = 0 or 1 { next_round[0] << player}
-#     if i = 2 or 3 { next_round[1] << player}
-#     if i = 4 or 5 { next_round[2] << player}
-#       ......
-#
-# end
-#
-# def addwinner(id)
-#   next_round << id
-# end
-#
-# def next_round
-# when next_round = sasdfasdf
-#   sort next round
-# end
-#
-# def sort next round
-#
 end

@@ -21,4 +21,34 @@ describe Game do
     game.winner('Kirsten')
     expect(game.next_round).to eq([['David', 'Faisal'], ['Jonathan', 'Kirsten']])
   end
+
+  it 'generates the third round of players' do
+    Game.any_instance.stub(generate_round_1: [['David', 'x'], ['Faisal', 'x'], ['Jonathan', 'x'], ['Kirsten', 'x']])
+    game = Game.new([])
+    game.winner('David')
+    game.winner('Faisal')
+    game.winner('Jonathan')
+    game.winner('Kirsten')
+    game.update_rounds
+    game.winner('David')
+    game.winner('Kirsten')
+    expect(game.next_round).to eq([['David', 'Kirsten']])
+  end
+
+  it 'generates the third round of players' do
+    Game.any_instance.stub(generate_round_1: [['David', 'x'], ['Faisal', 'x'], ['Jonathan', 'x'], ['Kirsten', 'x']])
+    game = Game.new([])
+    game.winner('David')
+    game.winner('Faisal')
+    game.winner('Jonathan')
+    game.winner('Kirsten')
+    game.update_rounds
+    game.winner('David')
+    game.winner('Kirsten')
+    game.update_rounds
+    expect(game.all_rounds).to eq([[['David', 'x'], ['Faisal', 'x'], ['Jonathan', 'x'], ['Kirsten', 'x']], [['David', 'Faisal'], ['Jonathan', 'Kirsten']]])
+  end
+
+
+
 end
