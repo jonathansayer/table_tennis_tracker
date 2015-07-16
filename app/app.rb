@@ -4,7 +4,6 @@ require './lib/game.rb'
 
 class Table_Tennis < Sinatra::Base
   set :views, proc{ File.join(root, 'views')}
-  # enable :sessions
 
   get '/' do
     erb :'users/new'
@@ -22,19 +21,8 @@ class Table_Tennis < Sinatra::Base
   end
 
   post '/tournament' do
-    # session[:names] ||= params[:username]
     $game = Game.new(params[:username])
   end
-
-  # get '/tournament/start' do
-  #   @ids = []
-  #   session[:names].each do |username|
-  #     @ids << User.all(name: username)[0].id
-  #   end
-  #   erb :'tournament/start' #??????
-  # end
-
-
 
   get '/table' do
     @table = $game.update_tournament_table
@@ -43,7 +31,6 @@ class Table_Tennis < Sinatra::Base
 
   post '/table' do
     victor = params[:winner]
-    p victor
     $game.winner(victor)
     @table = $game.update_tournament_table
     # user = User.first(:name => winner)
@@ -55,4 +42,5 @@ class Table_Tennis < Sinatra::Base
     $game.update_rounds
     redirect '/table'
   end
+
 end
