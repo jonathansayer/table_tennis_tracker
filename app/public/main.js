@@ -1,5 +1,6 @@
 
   var players = [];
+
   $('.add').click(function(){
     players.push($('.input').val());
   });

@@ -33,7 +33,8 @@ class Table_Tennis < Sinatra::Base
   end
 
   get '/table' do
-    game = Game.new(['David', 'Kirsten', 'Jonathan', 'Natalia', 1, 2, 3, 4, 6])
+    p session[:names]
+    game = Game.new(session[:names])
     @players = game.current_round
     @table = game.all_rounds
     erb :'/table/view'
