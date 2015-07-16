@@ -1,33 +1,37 @@
 Hello World
-<!--
-<%= @table.to_s %>
 
 <ul>
-<% @players.each do |id| %>
-    <li><%= id %></li>
-<% end %>
-</ul>
-<br></br> -->
-
-
-
-
-<ul>
-    <% num = 1 %>
+  <% num = 1 %>
   <% @table.each do |round| %>
 
-
-    <li>
+     <li>
       <%= "Round #{num}" %>
-      <% round.each do |matchup| %>
-      <% if matchup[0] %>
-        <input type="submit" value=<%= matchup[0] %> >
-        vs
-        <input type="submit" name="winner" value=<%= matchup[1] %> action='/table' method='POST'>
-        <span width=20px></span>
+
+      <% if round.is_a?(Array) %>
+
+        <% round.each do |matchup| %>
+
+          <% if matchup[0] %>
+            <form action='/table' method='POST'>
+              <input type="submit" name="winner" value=<%= matchup[0] %> >
+            </form>
+            vs
+            <form action='/table' method='POST'>
+              <input type="submit" name="winner" value=<%= matchup[1] %>>
+            </form>
+          <% end %>
+
         <% end %>
-        <% end %>
+
+      <% else %>
+        <div style="color:red"><%= round %></div>
+      <% end %>
     </li>
     <% num += 1 %>
+
   <% end %>
 </ul>
+
+<form action='/update_round' method='POST'>
+  <input type="submit" value="submit">
+</form>
