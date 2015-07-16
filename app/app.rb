@@ -17,6 +17,7 @@ class Table_Tennis < Sinatra::Base
   end
 
   get '/tournament/new' do
+    @players = User.all
     erb :'tournament/new'
   end
 

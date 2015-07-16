@@ -1,6 +1,12 @@
 <h2> Please Enter Players </h2>
-<form action="/tournament" method="post">
-  <input class='input' type="text" name="usernames">
+<form>
+ <!--  <input class='input' type="text" name="usernames"> -->
+    Name: 
+  <select class='input'>
+    <% @players.each do |player| %>
+     <option  value = <%= player.name %> ><%= player.name %></option>
+    <% end %>
+  </select> 
   <input type="submit" value="Start" class="start">
 </form>
 <button class='add'> Add </button>
