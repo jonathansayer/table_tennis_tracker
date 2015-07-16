@@ -19,7 +19,9 @@ Hello World
 
     <li>
       <%= "Round #{num}" %>
-      <%= round %>
+      <% round.each do |matchup| %>
+        <span><%= matchup %> </span>
+        <% end %>
     </li>
     <% num += 1 %>
   <% end %>
