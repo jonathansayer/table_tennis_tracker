@@ -18,7 +18,6 @@ attr_accessor :next_round
       table << Array.new(table[-1].length/2){ Array.new(0) }
     end
     table << []
-    # @table
   end
 
   def update_tournament_table
