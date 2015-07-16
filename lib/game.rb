@@ -9,19 +9,20 @@ attr_accessor :next_round
     @current_round = generate_round_1(ids)
     @next_round = Array.new(current_round.length/2){ Array.new(0) }
     @round_no = 0
+    @tournament_table = tournament_table
   end
 
   def tournament_table
-    @table = [current_round]
-    until @table[-1].length == 1 do
-      @table << Array.new(@table[-1].length/2){ Array.new(0) }
+    table = [current_round]
+    until table[-1].length == 1 do
+      table << Array.new(table[-1].length/2){ Array.new(0) }
     end
-    @table << []
-    @table
+    table << []
+    # @table
   end
 
-  def fill_tournament_table
-    @table
+  def update_tournament_table
+    @tournament_table
   end
 
   def generate_round_1 ids
@@ -43,9 +44,9 @@ attr_accessor :next_round
   end
 
   def winner(id)
-    if !@table[-2][0].empty?
-      @table[-1][0] = id
-      fill_tournament_table
+    if !@tournament_table[-2][0].empty?
+      @tournament_table[-1][0] = id
+      update_tournament_table
     else
       flat_current_players = @current_round.flatten
       i = flat_current_players.index(id).to_i
@@ -55,13 +56,9 @@ attr_accessor :next_round
 
   def update_rounds
     @round_no += 1
-    @table[@round_no] = @next_round
+    @tournament_table[@round_no] = @next_round
     @current_round = @next_round
     @next_round = Array.new(current_round.length/2){ Array.new(0) }
-    fill_tournament_table
+    update_tournament_table
   end
-  #
-  # def winner_name
-  # end
-
 end
