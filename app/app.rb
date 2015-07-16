@@ -17,17 +17,19 @@ class Table_Tennis < Sinatra::Base
   end
 
   get '/tournament/new' do
+    @players = User.all
     erb :'tournament/new'
   end
 
   post '/tournament' do
-    session[:names] = params[:username]
+    p session[:names] ||= params[:username]
+    redirect '/tournament/start'
   end
 
   get '/tournament/start' do
     @ids = []
     session[:names].each do |username|
-      @ids << username
+      @ids << User.all(name: username)[0].id
     end
     erb :'tournament/start' #??????
   end

@@ -3,13 +3,13 @@ class Game
 attr_reader :current_round
 attr_reader :players
 attr_accessor :next_round
-attr_reader :all_rounds
 
   def initialize(ids)
     @players = ids
     @current_round = generate_round_1(ids)
     @next_round = Array.new(current_round.length/2){ Array.new(0) }
-    @all_rounds = tournament_table
+    @round_no = 0
+    @tournament_table = tournament_table
   end
 
   def tournament_table
@@ -17,7 +17,11 @@ attr_reader :all_rounds
     until table[-1].length == 1 do
       table << Array.new(table[-1].length/2){ Array.new(0) }
     end
-    table
+    table << []
+  end
+
+  def update_tournament_table
+    @tournament_table
   end
 
   def generate_round_1 ids
@@ -39,15 +43,21 @@ attr_reader :all_rounds
   end
 
   def winner(id)
-    flat_current_players = @current_round.flatten
-    i = flat_current_players.index(id).to_i
-    @next_round[i / 4] << id
+    if !@tournament_table[-2][0].empty?
+      @tournament_table[-1][0] = id
+      update_tournament_table
+    else
+      flat_current_players = @current_round.flatten
+      i = flat_current_players.index(id).to_i
+      @next_round[i / 4] << id
+    end
   end
 
   def update_rounds
+    @round_no += 1
+    @tournament_table[@round_no] = @next_round
     @current_round = @next_round
-    @all_rounds << @current_round
     @next_round = Array.new(current_round.length/2){ Array.new(0) }
+    update_tournament_table
   end
-
 end

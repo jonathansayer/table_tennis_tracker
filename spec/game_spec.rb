@@ -46,7 +46,12 @@ describe Game do
     game.winner('David')
     game.winner('Kirsten')
     game.update_rounds
-    expect(game.all_rounds).to eq([[['David', 'x'], ['Faisal', 'x'], ['Jonathan', 'x'], ['Kirsten', 'x']], [['David', 'Faisal'], ['Jonathan', 'Kirsten']]])
+    expect(game.update_tournament_table).to eq(
+    [
+      [['David', 'x'], ['Faisal', 'x'], ['Jonathan', 'x'], ['Kirsten', 'x']],
+      [['David', 'Faisal'], ['Jonathan', 'Kirsten']],
+      [['David', 'Kirsten']],
+      []])
   end
 
 
