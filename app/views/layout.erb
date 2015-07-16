@@ -1,11 +1,63 @@
 <html>
   <head>
+    <link href="stylesheets/index.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"> </script>
   </head>
-  <body>
-    <%= yield %>
-  </body>
+ 
   <script src="/main.js"> </script>
 </html>
 
+
+ <title>Table Tennis</title>
+
+</head>
+<body>
+<div id="wrap">
+<div id="header"><h1>Table Tennis</h1></div><!-- header -->
+<div id="nav">
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/users/table">League</a></li>
+<li><a href="#">Start Tournament</a></li>
+
+<%= yield %>
+</ul>
+</div><!-- nav -->
+<div id="main">
+<blockquote>
+<b>Blockquote</b>
+<br />
+
+</blockquote>
+<h3>Consectetuer adipiscing elit</h3>
+
+
+</div><!-- main -->
+<div id="sidebar">
+<h3>Design Origins</h3>
+<p>Made on Earth by humans in the web design shop of Homefront Studios.
+<br />
+...With feeling!<sup>*</sup></p>
+<p><sub>* And a good amount of pixie dust</sub></p>
+<h3>Link Roll</h3>
+<ul><li><a href="#">Contact me</a></li>
+<li><a href="#">OSWD</a></li>
+<li><a href="http://validator.w3.org/check/referer">Valid XHTML</a></li>
+<li><a href="http://jigsaw.w3.org/css-validator/check/referer">Valid CSS</a></li>
+</ul>
+<h3>Using this Design</h3>
+<p>This template is released as an open source web design, which means that you are free to use it 
+and edit it any way you wish for personal or commercial purposes.</p>
+<p>The image used is royalty-free stock photography with no usage restrictions.</p>
+<p>We would feel the love if you'd leave the Homefront Studios link in the footer, though it's not 
+required.  If you use this template, we'd love to see it grow, so please, drop us a line and tell us where we can sneak a peek 
+at our little guy.</p>
+</div><!-- sidebar -->
+<div id="footer">
+<p><a href="http://www.homefrontstudios.com" class="blendedlinks" 
+title="Open Source Template Designed by Homefront Studios">Designed by Free CSS   Templates</a>, Thanks to <a href="http://www.openwebdesign.org/">Website Design</a></p>
+</div><!-- footer -->
+</div><!-- wrap -->
+</body>
+</html>
