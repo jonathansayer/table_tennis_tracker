@@ -4,6 +4,7 @@
     players.push($('.input').val());
   });
 
-  $('.start').click(function(){
-    $.post("/tournament",{'username': players});
-  });
+  // $('#start').click(function(){
+  //   console.log('Hello')
+  //   $.post('/tournament',{'username': players});
+  // });

@@ -28,7 +28,7 @@ class Table_Tennis < Sinatra::Base
 
   get '/tournament/start' do
     @ids = []
-    session[:names].each do |username|
+    p session[:names].each do |username|
       @ids << User.all(name: username)[0].id
     end
     erb :'tournament/start' #??????
