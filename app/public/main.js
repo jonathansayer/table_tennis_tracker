@@ -5,5 +5,5 @@
   });
 
   $('.start').click(function(){
-    $.post("/tournament",{username: players});
+    $.post("/tournament",{'username': players});
   });
