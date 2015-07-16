@@ -15,11 +15,10 @@ attr_reader :all_rounds
   def tournament_table
     table = [current_round]
     until table[-1].length == 1 do
-      table << Array.new(current_round.length/2){ Array.new(0) }
+      table << Array.new(table[-1].length/2){ Array.new(0) }
     end
     table
   end
-
 
   def generate_round_1 ids
     first_round_players = ids.shuffle
@@ -32,7 +31,7 @@ attr_reader :all_rounds
   end
 
   def gamesize
-    2 ** ((Math.log(players.length, 2)).ceil)
+    2**((Math.log(players.length, 2)).ceil)
   end
 
   def byes
