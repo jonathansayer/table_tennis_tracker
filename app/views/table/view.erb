@@ -20,10 +20,12 @@ Hello World
     <li>
       <%= "Round #{num}" %>
       <% round.each do |matchup| %>
+      <% if matchup[0] %>
         <input type="submit" value=<%= matchup[0] %> >
         vs
         <input type="submit" name="winner" value=<%= matchup[1] %> action='/table' method='POST'>
         <span width=20px></span>
+        <% end %>
         <% end %>
     </li>
     <% num += 1 %>
